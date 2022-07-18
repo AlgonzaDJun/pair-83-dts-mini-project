@@ -11,8 +11,12 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+
 import Logo from "../assets/logo.png";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
+import RedeemIcon from '@mui/icons-material/Redeem';
 
 // make array from Home Series Movies New and Popular My List
 const NavBar = ["Home", "Series", "Movies", "New", "Popular", "My List"];
@@ -42,35 +46,13 @@ const ResponsiveAppBar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
+            component="img"
             sx={{
-              display: "flex",
-              alignItems: "center",
-              width: "50%",
-              justifyContent: "space-between",
-              // bgcolor: "white",
+              height: 60,
             }}
-          >
-            <Box
-              component="img"
-              sx={{
-                height: 60,
-              }}
-              alt="My logo"
-              src={Logo}
-            />
-
-            <Box sx={{display: { xs: "none", md: "flex" } }}>
-              {NavBar.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
-              ))}
-            </Box>
-          </Box>
+            alt="My logo."
+            src={Logo}
+          />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -103,13 +85,52 @@ const ResponsiveAppBar = () => {
             >
               {NavBar.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  {/* <Typography textAlign="center">{page}</Typography> */}
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-          <Box sx={{ align:"right" }}>
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, ml: 20 }}
+          >
+            {NavBar.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Search">
+              <IconButton>
+                <SearchIcon sx={{ color: "white", fontSize: "45px", mr: 2 }} />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Name">
+              <IconButton>
+                <Typography
+                sx={{ color: "white", size:"inherit", mr: 2 }}>ABC</Typography>
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Gift Box">
+              <IconButton>
+                <RedeemIcon
+                  sx={{ color: "white", fontSize: "45px", mr: 2 }}
+                />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Notification">
+              <IconButton>
+                <NotificationsIcon
+                  sx={{ color: "white", fontSize: "45px", mr: 2 }}
+                />
+              </IconButton>
+            </Tooltip>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

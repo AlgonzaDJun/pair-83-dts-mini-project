@@ -7,11 +7,12 @@ const theme = createTheme({
       main: "#141414",
     },
     secondary: {
-      main: "#B9090B",
+      main: "#141414",
     },
     background: {
       default: "#141414",
     },
+    // white: { main: "#ffffff" },
   },
 });
 
