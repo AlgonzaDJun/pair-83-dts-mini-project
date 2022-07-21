@@ -8,11 +8,11 @@ import Footer from '../components/Footer';
 
 const Home = () => {
   return (
-    <div>
+    <div style={{backgroundColor: "#141414", color: "white"}}>
         <Navbar/>
         <Banner/>
         <RowCard/>
-        {/* <Footer/> */}
+        <Footer/>
     </div>
   )
 }

@@ -20,8 +20,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        {/* <Home /> */}
-        <Footer/>
+        <Home />
       </div>
     </ThemeProvider>
   );

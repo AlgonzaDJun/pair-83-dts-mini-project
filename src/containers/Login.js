@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
+import profilePicture from "../assets/ProfilePicture.png";
 
 const Login = () => {
   // make state isEmpty
@@ -50,7 +51,7 @@ const Login = () => {
       <Box sx={{ width: "80%", height: "100vh" }}>
         <CardMedia
           component="img"
-          image="http://placekitten.com/2004/2004"
+          image={profilePicture}
           height="100%"
           sx={{
             height: "100%",

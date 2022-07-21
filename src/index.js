@@ -6,16 +6,40 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./containers/Login";
 import Register from "./containers/Register";
-import 'tw-elements';
+import "tw-elements";
+import PrivateComponent from "./components/PrivateComponent";
+import NotFound from "./containers/NotFound";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register />}></Route>
+        <Route
+          path="/"
+          element={
+            <PrivateComponent>
+              <App />
+            </PrivateComponent>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PrivateComponent loginOnly={false}>
+              <Login />
+            </PrivateComponent>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PrivateComponent loginOnly={false}>
+              <Register />
+            </PrivateComponent>
+          }
+        />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
