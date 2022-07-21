@@ -12,7 +12,6 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Logo from "../assets/logo.png";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchIcon from "@mui/icons-material/Search";
 import RedeemIcon from "@mui/icons-material/Redeem";
@@ -24,7 +23,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 // make array from Home Series Movies New and Popular My List
 const NavBar = ["Home", "Series", "Movies", "New", "Popular", "My List"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -47,6 +45,7 @@ const ResponsiveAppBar = () => {
 
   // for log out
   const navigate = useNavigate();
+  // eslint-disable-next-line
   const [user] = useAuthState(auth);
   const onLogout = async () => {
     try {

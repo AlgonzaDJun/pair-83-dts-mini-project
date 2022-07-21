@@ -7,6 +7,7 @@ import profilePicture from "../assets/ProfilePicture.png";
 
 const Login = () => {
   // make state isEmpty
+  // eslint-disable-next-line
   const [isEmpty, setIsEmpty] = useState("");
 
   const navigate = useNavigate();
@@ -29,11 +30,11 @@ const Login = () => {
     }
   };
 
-  const styles = (theme) => ({
-    FontColor: {
-      color: "white",
-    },
-  });
+  // const styles = (theme) => ({
+  //   FontColor: {
+  //     color: "white",
+  //   },
+  // });
 
   return (
     <div
@@ -42,7 +43,7 @@ const Login = () => {
         position: "absolute",
         width: "100%",
         height: "100%",
-        background: "rgb(255,255,255)",
+        // background: "rgb(255,255,255)",
         background:
           "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 60%)",
         zIndex: "tooltip",
