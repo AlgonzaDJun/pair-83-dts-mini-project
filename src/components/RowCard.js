@@ -4,7 +4,7 @@ import requests from "../apis/request";
 
 const RowCard = () => {
   return (
-    <div>
+    <div style={{backgroundColor:"#141414"}}>
       <Row title="Popular" fetchUrl={requests.fetchPopular} />
       <Row title="Continue, Watching" fetchUrl={requests.fetchContinueWatch} isContinue/>
       <Row title="On the Agenda" fetchUrl={requests.fetchAgenda} />

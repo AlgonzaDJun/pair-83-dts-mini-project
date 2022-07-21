@@ -18,7 +18,6 @@ const Banner = () => {
     const fetchData = async () => {
       const request = await tmdb.get(requests.fetchPopular);
       setMovies(request.data.results);
-      console.log(request.data.results);
       return request;
     };
     fetchData();

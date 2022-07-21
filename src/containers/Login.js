@@ -1,4 +1,5 @@
-import { Box, Button, CardMedia, Grid, TextField } from "@mui/material";
+import { Box, Button, CardMedia, Grid, TextField, Typography } from "@mui/material";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../config/firebase";
@@ -9,28 +10,29 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const [errorMessage, setErrorMessage] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const email = data.get('email');
-    const password = data.get('password');
+    const email = data.get("email");
+    const password = data.get("password");
 
-    // try {
-    //     await signInWithEmailAndPassword(auth, email, password);
-    //     navigate("/");
-    // } catch (error) {
-    //     setErrorMessage(error.message);
-    // }
-};
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
+      console.log("login success");
+    } catch (error) {
+      setErrorMessage(error.message);
+      // console.log(error.message);
+    }
+  };
 
   const styles = (theme) => ({
     FontColor: {
       color: "white",
     },
   });
-
 
   return (
     <div
@@ -68,7 +70,6 @@ const Login = () => {
         component="form"
         onSubmit={handleSubmit}
         noValidate
-        sx={{ mt: 1 }}
       >
         <TextField
           error
@@ -89,7 +90,6 @@ const Login = () => {
             e.target.value === "" ? setIsEmpty(true) : setIsEmpty(false)
           }
         />
-
         <TextField
           error
           required
@@ -108,26 +108,21 @@ const Login = () => {
             e.target.value === "" ? setIsEmpty(true) : setIsEmpty(false)
           }
         />
-
+        <Typography color="red">{errorMessage}</Typography>DD
         <Button
+          type="submit"
           variant="contained"
           color="success"
           sx={{
             mt: "20px",
             width: "70%",
           }}
-          onClick={() => {
-            isEmpty
-              ? alert("Please fill out all fields")
-              : alert("Login Success");
-          }}
         >
           Login
         </Button>
         <Grid container>
           <Grid item sx={{ color: "white" }}>
-            asdf
-            {/* <Link to="/register">{"Don't have an account? Sign Up"}</Link> */}
+            <Link to="/register">{"Don't have an account? Sign Up"}</Link>
           </Grid>
         </Grid>
       </Box>

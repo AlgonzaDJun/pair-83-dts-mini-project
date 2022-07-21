@@ -11,6 +11,8 @@ import theme from "./themes/theme";
 import { ThemeProvider } from "@mui/material";
 import RowCard from "./components/RowCard";
 import Banner from "./components/Banner";
+import Register from "./containers/Register";
+import Home from "./containers/Home";
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
         {/* <Navbar/>
         <Banner />
         <RowCard/> */}
-        <Login/>
+        <Home />
       </div>
     </ThemeProvider>
   );

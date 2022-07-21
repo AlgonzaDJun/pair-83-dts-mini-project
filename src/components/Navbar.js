@@ -11,12 +11,16 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-
 import Logo from "../assets/logo.png";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchIcon from "@mui/icons-material/Search";
-import RedeemIcon from '@mui/icons-material/Redeem';
+import RedeemIcon from "@mui/icons-material/Redeem";
+
+import { auth } from "../config/firebase";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 // make array from Home Series Movies New and Popular My List
 const NavBar = ["Home", "Series", "Movies", "New", "Popular", "My List"];
@@ -39,6 +43,18 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  // for log out
+  const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+  const onLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -113,15 +129,14 @@ const ResponsiveAppBar = () => {
             </Tooltip>
             <Tooltip title="Name">
               <IconButton>
-                <Typography
-                sx={{ color: "white", size:"inherit", mr: 2 }}>ABC</Typography>
+                <Typography sx={{ color: "white", size: "inherit", mr: 2 }}>
+                  ABC
+                </Typography>
               </IconButton>
             </Tooltip>
             <Tooltip title="Gift Box">
               <IconButton>
-                <RedeemIcon
-                  sx={{ color: "white", fontSize: "45px", mr: 2 }}
-                />
+                <RedeemIcon sx={{ color: "white", fontSize: "45px", mr: 2 }} />
               </IconButton>
             </Tooltip>
             <Tooltip title="Notification">
@@ -152,11 +167,7 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={onLogout}>Logout</MenuItem>
             </Menu>
           </Box>
         </Toolbar>
