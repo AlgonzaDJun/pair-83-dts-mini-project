@@ -1,17 +1,37 @@
-import { Box, Button, CardMedia, TextField } from "@mui/material";
+import { Box, Button, CardMedia, Grid, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../config/firebase";
 
 const Login = () => {
   // make state isEmpty
   const [isEmpty, setIsEmpty] = useState("");
 
-  const styles = theme => ({
-    FontColor:{
-        color:'white'
-    }
-});
+  const navigate = useNavigate();
 
-  // background: 'linear-gradient(to right bottom, #430089, #82ffa1)'
+  const [errorMessage, setErrorMessage] = React.useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const email = data.get('email');
+    const password = data.get('password');
+
+    // try {
+    //     await signInWithEmailAndPassword(auth, email, password);
+    //     navigate("/");
+    // } catch (error) {
+    //     setErrorMessage(error.message);
+    // }
+};
+
+  const styles = (theme) => ({
+    FontColor: {
+      color: "white",
+    },
+  });
+
+
   return (
     <div
       className="login-page"
@@ -25,9 +45,7 @@ const Login = () => {
         zIndex: "tooltip",
       }}
     >
-      <Box 
-      sx={{ width: "80%", height: "100vh"}}
-      >
+      <Box sx={{ width: "80%", height: "100vh" }}>
         <CardMedia
           component="img"
           image="http://placekitten.com/2004/2004"
@@ -47,17 +65,25 @@ const Login = () => {
           flexDirection: "column",
           alignItems: "center",
         }}
+        component="form"
+        onSubmit={handleSubmit}
+        noValidate
+        sx={{ mt: 1 }}
       >
         <TextField
           error
-          id="outlined-basic"
-          label="Username"
-          size="normal"
-          fontColor="white"
+          margin="normal"
+          required
+          fullWidth
+          id="email"
+          label="Email Address"
+          name="email"
+          autoComplete="email"
+          autoFocus
           sx={{
             mt: "20px",
             width: "70%",
-            input: { color: 'white' }
+            input: { color: "white" },
           }}
           onChange={(e) =>
             e.target.value === "" ? setIsEmpty(true) : setIsEmpty(false)
@@ -66,15 +92,17 @@ const Login = () => {
 
         <TextField
           error
-          id="outlined-password-input"
+          required
+          fullWidth
+          name="password"
           label="Password"
           type="password"
+          id="password"
           autoComplete="current-password"
-          size="normal"
           sx={{
             mt: "20px",
             width: "70%",
-            input: { color: 'white' },
+            input: { color: "white" },
           }}
           onChange={(e) =>
             e.target.value === "" ? setIsEmpty(true) : setIsEmpty(false)
@@ -96,6 +124,12 @@ const Login = () => {
         >
           Login
         </Button>
+        <Grid container>
+          <Grid item sx={{ color: "white" }}>
+            asdf
+            {/* <Link to="/register">{"Don't have an account? Sign Up"}</Link> */}
+          </Grid>
+        </Grid>
       </Box>
     </div>
   );

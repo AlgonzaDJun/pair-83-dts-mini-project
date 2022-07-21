@@ -43,11 +43,12 @@ const Row = ({ title, fetchUrl, isLargeRow, isContinue, isTopTen }) => {
   );
 
   return (
-    <div>
+    <div className="Row">
       <Box
         sx={{
           m: 3,
         }}
+        color="primary"
       >
         <Typography variant="h6">{title}</Typography>
         <Box className="row_posters">
@@ -60,13 +61,14 @@ const Row = ({ title, fetchUrl, isLargeRow, isContinue, isTopTen }) => {
             navigation={true}
             modules={[Navigation]}
             className="mySwiper"
+            color="primary"
           >
             {movies
               //   .filter((_, index) => index < 10)
               .slice(0, 10)
               .map((movie) => (
-                <SwiperSlide key={movie.id}>
-                  <Card sx={{ display: "flex" }}>
+                <SwiperSlide key={movie.id} color="primary">
+                  <Card sx={{ display: "flex" } } color="primary">
                     {isTopTen && (
                       ranking.map((rank, index) => (
                         <>
@@ -107,6 +109,7 @@ const Row = ({ title, fetchUrl, isLargeRow, isContinue, isTopTen }) => {
                           : movie.backdrop_path
                       }`}
                       alt={movie.title}
+                      color="primary"
                     />
                   </Card>
                   {isContinue && continueWatch}
