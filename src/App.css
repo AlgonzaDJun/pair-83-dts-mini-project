@@ -49,9 +49,42 @@
 }
 
 .row_poster_large {
-  max-height: 250px;
+  max-height: 330px;
+  object-fit: contain;
 }
 
 .row_poster_large:hover {
   transform: scale(1.2);
 }
+
+/* 
+.swiper-slide CardMedia {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+} */
+
+/* .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+} */
