@@ -13,16 +13,15 @@ import RowCard from "./components/RowCard";
 import Banner from "./components/Banner";
 import Register from "./containers/Register";
 import Home from "./containers/Home";
+import Footer from "./components/Footer";
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App" color="primary">
-        {/* <Navbar/>
-        <Banner />
-        <RowCard/> */}
-        <Home />
+      <div className="App">
+        {/* <Home /> */}
+        <Footer/>
       </div>
     </ThemeProvider>
   );
