@@ -29,8 +29,9 @@
   object-fit: contain;
   width: 250px;
   max-width: 230px;
-  margin-right: 10px;
+  margin-right: 3px;
   transition: transform 450ms;
+  max-height: 250px;
 }
 
 .row_poster:hover {
@@ -49,11 +50,22 @@
 }
 
 .row_poster_large {
-  max-height: 330px;
+  height: 300px;
   object-fit: contain;
+  transition: transform 450ms;
 }
 
 .row_poster_large:hover {
+  transform: scale(1.2);
+}
+
+.row_poster_topTen {
+  height: 200px;
+  width: 10px;
+  object-fit: contain;
+  transition: transform 450ms;
+}
+.row_poster_topTen:hover {
   transform: scale(1.2);
 }
 
