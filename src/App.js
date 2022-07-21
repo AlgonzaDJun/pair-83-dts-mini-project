@@ -10,12 +10,15 @@ import Navbar from "./components/Navbar";
 import theme from "./themes/theme";
 import { ThemeProvider } from "@mui/material";
 import RowCard from "./components/RowCard";
+import Banner from "./components/Banner";
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <div className="App" color="primary">
+        <Navbar />
+        <Banner />
         <RowCard/>
       </div>
     </ThemeProvider>

@@ -10,7 +10,7 @@ import rank8 from "../assets/Rank - 08.png";
 import rank9 from "../assets/Rank - 09.png";
 import rank10 from "../assets/Rank - 10.png";
 
-export const rangking = [
+export const ranking = [
   rank1,
   rank2,
   rank3,
@@ -22,5 +22,3 @@ export const rangking = [
   rank9,
   rank10,
 ];
-
-export default rangking

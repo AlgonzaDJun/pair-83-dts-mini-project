@@ -13,11 +13,10 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 
 // import images array from ranking
-import { rangking } from "../assets/rangking";
-
-import rank1 from "../assets/Rank - 01.png";
+import {ranking} from "../assets/rangking";
 
 const Row = ({ title, fetchUrl, isLargeRow, isContinue, isTopTen }) => {
+  
   const BASE_IMG_URL = "https://image.tmdb.org/t/p/original";
   const [movies, setMovies] = useState([]);
 
@@ -67,11 +66,11 @@ const Row = ({ title, fetchUrl, isLargeRow, isContinue, isTopTen }) => {
               .slice(0, 10)
               .map((movie) => (
                 <SwiperSlide key={movie.id}>
-                  <Card key={rangking} sx={{ display: "flex" }}>
-                    {isTopTen &&
-                      rangking.map((rank, index) => (
+                  <Card sx={{ display: "flex" }}>
+                    {isTopTen && (
+                      ranking.map((rank, index) => (
                         <>
-                          <img src={rank} alt="rank" key={index} />
+                          <img src={`${rank}`} alt="rank" key={index} />
                           <CardMedia
                             className={
                               isLargeRow
@@ -90,7 +89,8 @@ const Row = ({ title, fetchUrl, isLargeRow, isContinue, isTopTen }) => {
                             alt={movie.title}
                           />
                         </>
-                      ))}
+                      ))
+                    )}
                     <CardMedia
                       className={
                         isLargeRow
