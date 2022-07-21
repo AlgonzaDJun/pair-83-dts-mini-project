@@ -1,4 +1,5 @@
-const API_KEY = "2e168b3b879ec814fa52ec1be986b659";
+// const API_KEY = "2e168b3b879ec814fa52ec1be986b659";
+const API_KEY = process.env.REACT_APP_TMDB_KEY;
 
 const requests = {
   fetchPopular: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`,
